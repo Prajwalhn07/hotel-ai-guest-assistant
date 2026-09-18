@@ -1,0 +1,54 @@
+{
+  "hotel": {
+    "name": "Grand Horizon Hotel",
+    "location": "Bengaluru, Karnataka",
+    "check_in": "2:00 PM",
+    "check_out": "12:00 PM",
+    "breakfast": {
+      "included": true,
+      "timing": "7:00 AM - 10:30 AM"
+    },
+    "amenities": [
+      "Swimming Pool",
+      "Free Wi-Fi",
+      "Restaurant",
+      "Gym",
+      "Parking"
+    ],
+    "cancellation_policy": "Free cancellation up to 24 hours before check-in."
+  },
+  "rooms": [
+    {
+      "name": "Deluxe Room",
+      "max_guests": 2,
+      "bed": "King Bed",
+      "price_per_night": 4500
+    },
+    {
+      "name": "Family Room",
+      "max_guests": 4,
+      "bed": "King Bed + Sofa Bed",
+      "price_per_night": 6500
+    },
+    {
+      "name": "Executive Suite",
+      "max_guests": 3,
+      "bed": "King Bed + Sofa Bed",
+      "price_per_night": 8500
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Does the hotel have Wi-Fi?",
+      "answer": "Yes, complimentary Wi-Fi is available throughout the hotel."
+    },
+    {
+      "question": "Does the hotel have a swimming pool?",
+      "answer": "Yes, the hotel has a swimming pool."
+    },
+    {
+      "question": "Is breakfast included?",
+      "answer": "Yes, breakfast is included."
+    }
+  ]
+}
