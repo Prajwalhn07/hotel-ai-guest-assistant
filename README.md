@@ -1,64 +1,20 @@
-# 🏨 Grand Horizon Hotel — AI Guest Assistant
+# 🏨 Hotel AI Guest Assistant
 
-An AI-powered full-stack hotel guest assistant that helps guests get information about hotel facilities, policies, rooms, and availability through a conversational interface.
+A full-stack AI-powered hotel guest assistant that helps hotel guests get information about hotel facilities, policies, rooms, and room availability through a conversational chat interface.
 
-## 📌 Project Overview
+## 🚀 Features
 
-The Grand Horizon Hotel AI Guest Assistant provides a simple chat-based experience for hotel guests.
-
-Guests can:
-
-- Ask questions about hotel facilities
-- Ask about breakfast and timings
-- Ask about check-in and check-out
-- Ask about hotel amenities
-- Check room availability
-- Provide check-in and check-out dates
-- Provide the number of guests
-- Receive available room details and prices
-- Receive helpful fallback responses when information is unavailable
-
-The application uses deterministic backend logic for business-critical availability decisions and an AI service for natural-language hotel questions.
-
----
-
-# ✨ Features
-
-## Guest Chat
-
-Guests can ask questions such as:
-
-- Does the hotel have Wi-Fi?
-- Is breakfast included?
-- Does the hotel have a swimming pool?
-- What time is check-in?
-- What time is check-out?
-
-## Room Availability
-
-Guests can provide:
-
-- Check-in date
-- Check-out date
-- Number of guests
-
-The backend checks room capacity and returns matching rooms.
-
-## Error Handling
-
-The application handles:
-
-- Missing availability information
-- Invalid dates
-- Check-out before check-in
-- Invalid guest counts
-- Backend connection failures
-- AI service failures
-- Unsupported hotel questions
-
-## Responsive Interface
-
-The frontend provides a conversational interface designed for both desktop and mobile screens.
+- 💬 Conversational hotel guest assistant
+- 🤖 AI-powered responses using OpenAI API
+- 🏨 Hotel information from a structured JSON knowledge base
+- 📅 Room availability checking
+- 👥 Guest count validation
+- 🔄 Conversation context support
+- ⚡ Loading and error states in the frontend
+- 🛡️ Deterministic availability business logic
+- 🔒 API key stored securely in environment variables
+- 🧪 Automated backend tests
+- 📱 Responsive chat interface
 
 ---
 
@@ -70,7 +26,6 @@ The frontend provides a conversational interface designed for both desktop and m
 - Vite
 - JavaScript
 - CSS
-- Fetch API
 
 ## Backend
 
@@ -82,9 +37,7 @@ The frontend provides a conversational interface designed for both desktop and m
 ## AI
 
 - OpenAI API
-- AI-powered hotel question answering
-- Hotel knowledge context
-- Fallback handling
+- GPT-4o-mini
 
 ## Data
 
@@ -100,39 +53,40 @@ The frontend provides a conversational interface designed for both desktop and m
 # 🏗️ Project Architecture
 
 ```text
-                    ┌─────────────────────┐
-                    │       Guest         │
-                    └──────────┬──────────┘
+                    ┌──────────────────────┐
+                    │      Guest/User      │
+                    └──────────┬───────────┘
                                │
                                ▼
-                    ┌─────────────────────┐
-                    │   React Frontend    │
-                    │      + Vite         │
-                    └──────────┬──────────┘
+                    ┌──────────────────────┐
+                    │   React Frontend     │
+                    │   Conversational UI  │
+                    └──────────┬───────────┘
                                │
-                         HTTP / JSON
+                         HTTP / REST API
                                │
                                ▼
-                    ┌─────────────────────┐
-                    │    FastAPI Backend  │
-                    └──────────┬──────────┘
+                    ┌──────────────────────┐
+                    │     FastAPI Backend  │
+                    └──────────┬───────────┘
                                │
-                ┌──────────────┼──────────────┐
-                │              │              │
-                ▼              ▼              ▼
-        ┌─────────────┐ ┌─────────────┐ ┌─────────────┐
-        │ Chat Route  │ │ Availability│ │ Hotel Data  │
-        │ /api/chat   │ │ /api/       │ │ hotel.json  │
-        │             │ │ availability│ │             │
-        └──────┬──────┘ └──────┬──────┘ └─────────────┘
-               │               │
-               ▼               ▼
-        ┌─────────────┐ ┌─────────────┐
-        │ AI Service  │ │ Availability│
-        │             │ │ Service     │
-        └──────┬──────┘ └─────────────┘
-               │
-               ▼
-        ┌─────────────┐
-        │ OpenAI API  │
-        └─────────────┘
+                ┌──────────────┴──────────────┐
+                │                             │
+                ▼                             ▼
+       ┌─────────────────┐          ┌──────────────────┐
+       │   Chat Route    │          │ Availability     │
+       │   /api/chat     │          │ /api/availability│
+       └────────┬────────┘          └────────┬─────────┘
+                │                            │
+                ▼                            ▼
+       ┌─────────────────┐          ┌──────────────────┐
+       │   AI Service    │          │ Availability     │
+       │                 │          │ Service          │
+       └────────┬────────┘          └────────┬─────────┘
+                │                            │
+                ▼                            ▼
+       ┌─────────────────┐          ┌──────────────────┐
+       │   OpenAI API    │          │ Hotel Knowledge  │
+       │                 │          │ Base             │
+       └─────────────────┘          │ hotel.json       │
+                                    └──────────────────┘
